@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ASP_SPU221_HMW.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\css\\indexStyle.css",
+      "PackagePath": "staticwebassets\\css\\indexStyle.css"
+    },
+    {
       "Id": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

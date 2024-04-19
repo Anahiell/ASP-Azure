@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
     <p>Это стартовое меню еще не придумал о чем сайт и т.д.</p>
     <h3>переходите на User Page - пераое дз</h3>
@@ -9,3 +8,69 @@
     <p><h3>второе дз про иньекции Key Generator</h3></p>
     <p><a asp-controller="Home" asp-action="IocGeneratorView">HERE</a></p>
 </div>
+<div id="card-container" class="row">
+    <div class="col-md-4">
+        <div class="card draggable-card">
+            <div class="card-body">
+                <h5 class="card-title">Домашнее задание 1</h5>
+                <p class="card-text"><a asp-controller="Home" asp-action="UserPage">HERE</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card draggable-card">
+            <div class="card-body">
+                <h5 class="card-title">Домашнее задание 2</h5>
+                <p class="card-text"><a asp-controller="Home" asp-action="IocGeneratorView">HERE</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card draggable-card">
+            <div class="card-body">
+                <h5 class="card-title">Домашнее задание 3</h5>
+                <p class="card-text"><a asp-controller="Home" asp-action="UserPage">HERE</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+        $(".draggable-card").draggable({
+            containment: "body", // Здесь изменение
+            stack: ".draggable-card"
+        });
+    });
+
+    $(function () {
+        $(".draggable-card").on("drag", function () {
+            $(".connection-line").remove();
+            $(".draggable-card").each(function () {
+                var $this = $(this);
+                var thisOffset = $this.offset();
+                var thisCenterX = thisOffset.left + $this.outerWidth() / 2;
+                var thisCenterY = thisOffset.top + $this.outerHeight() / 2;
+
+                $(".draggable-card").not($this).each(function () {
+                    var $other = $(this);
+                    var otherOffset = $other.offset();
+                    var otherCenterX = otherOffset.left + $other.outerWidth() / 2;
+                    var otherCenterY = otherOffset.top + $other.outerHeight() / 2;
+
+                    var $connection = $("<div class='connection-line'></div>");
+                    $connection.css({
+                        left: Math.min(thisCenterX, otherCenterX),
+                        top: Math.min(thisCenterY, otherCenterY),
+                        width: Math.abs(thisCenterX - otherCenterX),
+                        height: Math.abs(thisCenterY - otherCenterY)
+                    });
+                    $("body").append($connection); // Также измените здесь
+                });
+            });
+        });
+    });
+</script>
+

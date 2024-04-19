@@ -1,4 +1,5 @@
 using ASP_SPU221_HMW.Data.Context;
+using ASP_SPU221_HMW.Data.Dal;
 using ASP_SPU221_HMW.Services.Hash;
 using ASP_SPU221_HMW.Services.Kdf;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +14,10 @@ builder.Services.AddSingleton<IKdfService, PasswordKdfService>();
 
 builder.Services.AddDbContext<DataContext>(options=>
 options.UseSqlServer(
-    builder.Configuration.GetConnectionString("MsSql"))
+    builder.Configuration.GetConnectionString("MsSql")),
+    ServiceLifetime.Singleton
 );
-
+builder.Services.AddSingleton<DataAcessor>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

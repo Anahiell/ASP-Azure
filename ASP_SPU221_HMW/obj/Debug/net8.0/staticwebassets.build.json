@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RUebQV+G6rsAEztdvPT7vQjWytRH9xgb5iv9k/DF33k=",
+  "Hash": "1SXIbEOqK2hYgHb8q1u7AFQuTzDqJ5HLLQbTMEdF85U=",
   "Source": "ASP_SPU221_HMW",
   "BasePath": "_content/ASP_SPU221_HMW",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ASP_SPU221_HMW.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\css\\indexStyle.css",
+      "SourceId": "ASP_SPU221_HMW",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\",
+      "BasePath": "_content/ASP_SPU221_HMW",
+      "RelativePath": "css/indexStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\indexStyle.css"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\css\\site.css",

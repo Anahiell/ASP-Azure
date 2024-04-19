@@ -10,6 +10,8 @@ namespace ASP_SPU221_HMW.Models.Home.SignUp
         public String UserEmail { get; set; } = null!;
         [FromForm(Name = "user-password1")]
         public String UserPassword { get; set; } = null!;
+        [FromForm(Name = "user-password2")]
+        public String UserPassword2 { get; set; } = null!;
         [FromForm(Name = "signup-birthdate")]
         public DateTime? Birthdate { get; set; } = null!;
         [FromForm(Name = "singup-avatar")]

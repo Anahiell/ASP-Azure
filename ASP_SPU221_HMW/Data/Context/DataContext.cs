@@ -1,4 +1,4 @@
-﻿using ASP_SPU221_HMW.Data.Entitys;
+﻿using ASP_SPU221_HMW.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASP_SPU221_HMW.Data.Context

@@ -1,0 +1,101 @@
+﻿@model ASP_SPU221_HMW.Models.Home.SignUp.SignUpPageModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+@if (Model.IsSuccess != null)
+{
+    <div class="@(Model.IsSuccess ?? false ? "alert alert-success" : "alert alert-danger")" role="alert">
+        @Model.Message
+    </div>
+}
+<form asp-action="SignUp" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="username-nick">User Nick Name </span><span class="input-group-text"><i class="bi bi-person-lines-fill"></i></span>
+
+                <input type="text" name="username-nick" class="form-control" aria-label="username-nick" placeholder="Nickname" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="user-email">User Email</span><span class="input-group-text"> <i class="bi bi-envelope"></i></span>
+                <input type="text" name="user-email" class="form-control" aria-label="user-email" placeholder="baracuda@gmail.com" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="user-password1">Password </span><span class="input-group-text"><i class="bi bi-eye" id="eyeIcon1"></i></span>
+                <input type="password" class="form-control" aria-label="user-password1" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password1">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="user-password2">Confirm Password </span><span class="input-group-text"> <i class="bi bi-eye" id="eyeIcon2"></i></span>
+                <input type="password" class="form-control" aria-label="user-password2" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password2">
+            </div>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="showPasswordCheckbox">
+            <label class="form-check-label" for="showPasswordCheckbox">Show Password</label>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="birthdate-addon">
+                    <i class="bi bi-cake"></i>
+                </span>
+                <input type="date" class="form-control"
+                       placeholder="Date of birthday" id="date" name="signup-birthdate" aria-describedby="birthdate-addon" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="singup-avatar">
+                        <i class="bi bi-file-arrow-down"></i>
+                    </label>
+                    <input type="file" class="form-control" name="singup-avatar" id="singup-avatar">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check">
+                    <input name="signup-confirm" class="form-check-input" type="checkbox" value="true" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Agree with rules of site
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-info">Registr</button>
+
+        </div>
+    </div>
+
+</form>
+
+<script>
+    var passwordInput1 = document.getElementById("password1");
+    var passwordInput2 = document.getElementById("password2");
+    var showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+    var eyeIcon1 = document.getElementById("eyeIcon1");
+    var eyeIcon2 = document.getElementById("eyeIcon2");
+
+    showPasswordCheckbox.addEventListener("change", function () {
+        if (showPasswordCheckbox.checked) {
+            passwordInput1.type = "text";
+            passwordInput2.type = "text";
+            eyeIcon1.classList.remove("bi-eye");
+            eyeIcon1.classList.add("bi-eye-slash");
+            eyeIcon2.classList.remove("bi-eye");
+            eyeIcon2.classList.add("bi-eye-slash");
+        } else {
+            passwordInput1.type = "password";
+            passwordInput2.type = "password";
+            eyeIcon1.classList.remove("bi-eye-slash");
+            eyeIcon1.classList.add("bi-eye");
+            eyeIcon2.classList.remove("bi-eye-slash");
+            eyeIcon2.classList.add("bi-eye");
+        }
+    });
+</script>

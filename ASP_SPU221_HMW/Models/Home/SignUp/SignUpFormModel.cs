@@ -1,0 +1,20 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace ASP_SPU221_HMW.Models.Home.SignUp
+{
+    public class SignUpFormModel
+    {
+        [FromForm(Name = "username-nick")]
+        public String UserNick { get; set; } = null!;
+        [FromForm(Name = "user-email")]
+        public String UserEmail { get; set; } = null!;
+        [FromForm(Name = "user-password1")]
+        public String UserPassword { get; set; } = null!;
+        [FromForm(Name = "signup-birthdate")]
+        public DateTime? Birthdate { get; set; } = null!;
+        [FromForm(Name = "singup-avatar")]
+        public IFormFile AvatarFile { get; set; } = null!;
+        [FromForm(Name = "signup-confirm")]
+        public bool Confirm {  get; set; } 
+    }
+}

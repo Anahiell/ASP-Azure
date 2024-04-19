@@ -13,13 +13,31 @@
     <header>
         <nav class="navbar navbar-expand bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
-                <form class="justify-content-start">
-                    <a class="btn btn-outline-success me-2" type="button" asp-controller="Home" asp-action="Index"><i class="bi bi-power"></i> Main Page</a>
-                    <a class="btn btn-sm btn-outline-secondary" type="button" asp-controller="Home" asp-action="UserPage"><i class="bi bi-person-vcard-fill"></i> User Page</a>
+                <form class="d-flex">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-success me-2" type="button" asp-controller="Home" asp-action="Index"><i class="bi bi-power"></i> Main Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-outline-secondary me-0" type="button" asp-controller="Home" asp-action="UserPage"><i class="bi bi-person-vcard-fill"></i> User Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-outline-secondary me-0" type="button" asp-controller="Home" asp-action="IocGeneratorView"><i class="bi bi-key"></i> Generator of Key</a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+                <form class="d-flex">
+                    <a class="btn btn-sm btn-outline-secondary ms-auto" type="button" asp-controller="Home" asp-action="SignUp"><i class="bi bi-key"></i> Sign Up</a>
+                    <a class="btn btn-sm btn-outline-secondary ms-auto" type="button" asp-controller="Home" asp-action="SignIn"><i class="bi bi-key"></i> Sign In</a>
+
                 </form>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

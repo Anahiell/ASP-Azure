@@ -1,7 +1,20 @@
+using ASP_SPU221_HMW.Data.Context;
+using ASP_SPU221_HMW.Services.Hash;
+using ASP_SPU221_HMW.Services.Kdf;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//регестрируем сервисы в контейнер
+builder.Services.AddSingleton<IRandCodeService,RandomCodeGenerator>();
+builder.Services.AddSingleton<IKdfService, PasswordKdfService>();
+
+builder.Services.AddDbContext<DataContext>(options=>
+options.UseSqlServer(
+    builder.Configuration.GetConnectionString("MsSql"))
+);
 
 var app = builder.Build();
 

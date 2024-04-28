@@ -7,7 +7,7 @@
         public string Email { get; set; } = null!;
         public String? AvatarUrl { get; set; }
         public DateTime? Birthdate { get; set; }
-        public DateTime? Registered { get; set; }
+        public DateTime? Registrate { get; set; }
         public String Salt { get; set; } = null!;
         public String DerivedKey { get; set; } = null!;
 

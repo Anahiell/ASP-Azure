@@ -5,6 +5,7 @@ using ASP_SPU221_HMW.Models.Home.SignUp;
 using ASP_SPU221_HMW.Models.UserM;
 using ASP_SPU221_HMW.Services.Hash;
 using ASP_SPU221_HMW.Services.Kdf;
+using ASP_SPU221_HMW.Services.Upload;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Cryptography;
@@ -14,17 +15,21 @@ namespace ASP_SPU221_HMW.Controllers
 {
     public class HomeController : Controller
     {
-
+        private readonly IHashService _hashService;
         private readonly ILogger<HomeController> _logger;
         private readonly IRandCodeService _randCodeService;
         private readonly IKdfService _kdfService;
-        private readonly DataAcessor _dataAccessor;
-        public HomeController(ILogger<HomeController> logger, IRandCodeService randCodeService, IKdfService kdfService, DataAcessor dataAccessor)
+        private readonly DataAccessor _dataAccessor;
+        private readonly IUploadService _uploadService;
+
+        public HomeController(ILogger<HomeController> logger, IRandCodeService randCodeService, IKdfService kdfService, DataAccessor dataAccessor, IHashService hashService, IUploadService uploadService)
         {
             _logger = logger;
             _randCodeService = randCodeService;
             _kdfService = kdfService;
             _dataAccessor = dataAccessor;
+            _hashService = hashService;
+            _uploadService = uploadService;
         }
 
         public IActionResult Index()
@@ -88,6 +93,18 @@ namespace ASP_SPU221_HMW.Controllers
                     pageModel.Message = "Registration Error";
                     pageModel.IsSuccess = false;
                 }
+                if (String.IsNullOrEmpty(formModel.UserPassword))
+                {
+                    pageModel.Message = "Sign Up is rollback" +
+                        "password empty";
+                    pageModel.IsSuccess = false;
+                }
+                if (formModel.UserPassword != formModel.UserPassword2)
+                {
+                    pageModel.Message = "Sign Up is rollback" +
+                        "repeat password empty";
+                    pageModel.IsSuccess = false;
+                }
                 else
                 {
                     _dataAccessor.UserDao.SignupUser(mapUser(formModel));
@@ -100,16 +117,17 @@ namespace ASP_SPU221_HMW.Controllers
         }
         private Data.Entities.User mapUser(SignUpFormModel formModel)
         {
-            String salt = GenerateRandomSalt(2);
+            String salt ="3";
             return new()
             {
                 Id = Guid.NewGuid(),
-                Name = formModel.UserNick,
+                Name = formModel.UserName,
                 Email = formModel.UserEmail,
-                Registered = DateTime.Now,
                 Birthdate = formModel.Birthdate,
+                Registrate = DateTime.Now,
+                AvatarUrl = formModel.SavedFileName,
                 Salt = salt,
-                DerivedKey = _kdfService.GetDerivedKey("123", salt)
+                DerivedKey = _kdfService.GetDerivedKey(formModel.UserPassword, salt)
             };
         }
         private Dictionary<String, String> _ValidateSignUpModel(SignUpFormModel? FormModel)
@@ -121,11 +139,11 @@ namespace ASP_SPU221_HMW.Controllers
             }
             if(FormModel != null) 
             {
-                if (String.IsNullOrEmpty(FormModel.UserNick))
+                if (String.IsNullOrEmpty(FormModel.UserName))
                 {
-                    result[nameof(FormModel.UserNick)] = "Name is empty";
+                    result[nameof(FormModel.UserName)] = "Name is empty";
                 }
-                if (String.IsNullOrEmpty(FormModel.UserNick))
+                if (String.IsNullOrEmpty(FormModel.UserName))
                 {
                     result[nameof(FormModel.UserEmail)] = "Email is empty";
                 }
@@ -137,29 +155,28 @@ namespace ASP_SPU221_HMW.Controllers
                 {
                     result[nameof(FormModel.Confirm)] = "ConfirmExpected";
                 }
+                if (result.Count == 0)
+                {
+                    if (FormModel.AvatarFile != null)
+                    {
+                        try
+                        {
+                            FormModel.SavedFileName =
+                                _uploadService.SaveFormFile(
+                                    FormModel.AvatarFile,
+                                    "wwwroot/img/avatars");
+                        }
+                        catch (Exception ex)
+                        {
+                            result[nameof(FormModel.AvatarFile)] = ex.Message;
+                        }
+
+                    }
+                }
             }
             return result;
         }
-        private string GenerateRandomSalt(int length)
-        {
-            const string allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            byte[] randomBytes = new byte[length];
-
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(randomBytes);
-            }
-
-            StringBuilder saltBuilder = new StringBuilder(length);
-            foreach (byte b in randomBytes)
-            {
-                saltBuilder.Append(allowedChars[b % allowedChars.Length]);
-            }
-
-            return saltBuilder.ToString();
-        }
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+       public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }

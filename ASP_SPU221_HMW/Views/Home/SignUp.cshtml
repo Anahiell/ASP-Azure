@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col">
             <div class="input-group mb-3">
-                <span class="input-group-text" id="username-nick">User Nick Name </span><span class="input-group-text"><i class="bi bi-person-lines-fill"></i></span>
+                <span class="input-group-text" id="username-nick">User Name </span><span class="input-group-text"><i class="bi bi-person-lines-fill"></i></span>
 
                 <input type="text" name="username-nick" class="form-control" aria-label="username-nick" placeholder="Nickname" aria-describedby="inputGroup-sizing-default">
             </div>
@@ -20,7 +20,7 @@
         <div class="col">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="user-email">User Email</span><span class="input-group-text"> <i class="bi bi-envelope"></i></span>
-                <input type="text" name="user-email" class="form-control" aria-label="user-email" placeholder="baracuda@gmail.com" aria-describedby="inputGroup-sizing-default">
+                <input type="email" name="user-email" class="form-control" aria-label="user-email" placeholder="baracuda@gmail.com" aria-describedby="inputGroup-sizing-default">
             </div>
         </div>
     </div>
@@ -28,19 +28,23 @@
         <div class="col">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="user-password1">Password </span><span class="input-group-text"><i class="bi bi-eye" id="eyeIcon1"></i></span>
-                <input type="password" class="form-control" aria-label="user-password1" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password1">
+                <input type="password" class="form-control" name="user-password1" aria-label="user-password1" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password1">
             </div>
         </div>
         <div class="col">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="user-password2">Confirm Password </span><span class="input-group-text"> <i class="bi bi-eye" id="eyeIcon2"></i></span>
-                <input type="password" class="form-control" aria-label="user-password2" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password2">
+                <input type="password" class="form-control" name="user-password2" aria-label="user-password2" placeholder="*****" aria-describedby="inputGroup-sizing-default" id="password2">
             </div>
         </div>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="showPasswordCheckbox">
-            <label class="form-check-label" for="showPasswordCheckbox">Show Password</label>
+        <div class="col">
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="showPasswordCheckbox">
+                <label class="form-check-label" for="showPasswordCheckbox">Show Password</label>
+            </div>
         </div>
+        </div>
+        <div class="row">
         <div class="col">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="birthdate-addon">

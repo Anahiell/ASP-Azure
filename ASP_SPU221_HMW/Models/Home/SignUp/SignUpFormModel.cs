@@ -5,7 +5,7 @@ namespace ASP_SPU221_HMW.Models.Home.SignUp
     public class SignUpFormModel
     {
         [FromForm(Name = "username-nick")]
-        public String UserNick { get; set; } = null!;
+        public String UserName { get; set; } = null!;
         [FromForm(Name = "user-email")]
         public String UserEmail { get; set; } = null!;
         [FromForm(Name = "user-password1")]
@@ -17,6 +17,8 @@ namespace ASP_SPU221_HMW.Models.Home.SignUp
         [FromForm(Name = "singup-avatar")]
         public IFormFile AvatarFile { get; set; } = null!;
         [FromForm(Name = "signup-confirm")]
-        public bool Confirm {  get; set; } 
+        public bool Confirm {  get; set; }
+        public String? SavedFileName { get; set; }
+
     }
 }

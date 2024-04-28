@@ -1,7 +1,9 @@
 using ASP_SPU221_HMW.Data.Context;
 using ASP_SPU221_HMW.Data.Dal;
+using ASP_SPU221_HMW.Middleware;
 using ASP_SPU221_HMW.Services.Hash;
 using ASP_SPU221_HMW.Services.Kdf;
+using ASP_SPU221_HMW.Services.Upload;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,14 +12,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 //регестрируем сервисы в контейнер
 builder.Services.AddSingleton<IRandCodeService,RandomCodeGenerator>();
+builder.Services.AddSingleton<IHashService, ShaHashService>();
 builder.Services.AddSingleton<IKdfService, PasswordKdfService>();
+builder.Services.AddSingleton<IUploadService, UploadServiceV1>();
 
 builder.Services.AddDbContext<DataContext>(options=>
 options.UseSqlServer(
     builder.Configuration.GetConnectionString("MsSql")),
     ServiceLifetime.Singleton
 );
-builder.Services.AddSingleton<DataAcessor>();
+builder.Services.AddSingleton<DataAccessor>();
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +47,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
+app.UseSessionAuth();
 
 app.MapControllerRoute(
     name: "default",

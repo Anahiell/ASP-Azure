@@ -79,6 +79,10 @@ namespace ASP_SPU221_HMW.Controllers
         {
             return View();
         }
+        public ViewResult UserPageAuth()
+        {
+            return View();
+        }
         public ViewResult SignUp(SignUpFormModel? formModel)
         {
             SignUpPageModel pageModel = new()

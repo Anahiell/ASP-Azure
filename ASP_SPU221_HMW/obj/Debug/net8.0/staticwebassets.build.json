@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "i2v8+PyJVjkmvkNVnnPM0PIKm2H998Az2UudSjlBjLo=",
+  "Hash": "ghX7kGrHBcwOvLC/UwytHFbAk7RsdmhKFCvAH6j/2zY=",
   "Source": "ASP_SPU221_HMW",
   "BasePath": "_content/ASP_SPU221_HMW",
   "Mode": "Default",
@@ -188,6 +188,25 @@
       "OriginalItemSpec": "wwwroot\\img\\avatars\\60360fe9-178d-42ec-baa7-fa5162826fc5.jpg"
     },
     {
+      "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\img\\avatars\\619373aa-014d-446f-a4f9-5addd0f45db4.jpeg",
+      "SourceId": "ASP_SPU221_HMW",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\",
+      "BasePath": "_content/ASP_SPU221_HMW",
+      "RelativePath": "img/avatars/619373aa-014d-446f-a4f9-5addd0f45db4.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\avatars\\619373aa-014d-446f-a4f9-5addd0f45db4.jpeg"
+    },
+    {
       "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\img\\avatars\\763fe958-e38d-4bed-8ace-eed915993e48.png",
       "SourceId": "ASP_SPU221_HMW",
       "SourceType": "Discovered",
@@ -281,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\avatars\\ef254ded-dae2-4f44-8a73-fa247ec00017.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\img\\avatars\\f29608d6-2862-47b8-bdb4-e72dc7d01376.jpg",
+      "SourceId": "ASP_SPU221_HMW",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\",
+      "BasePath": "_content/ASP_SPU221_HMW",
+      "RelativePath": "img/avatars/f29608d6-2862-47b8-bdb4-e72dc7d01376.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\avatars\\f29608d6-2862-47b8-bdb4-e72dc7d01376.jpg"
     },
     {
       "Identity": "C:\\Users\\user\\source\\repos\\ASP_SPU221_HMW\\ASP_SPU221_HMW\\wwwroot\\js\\site.js",

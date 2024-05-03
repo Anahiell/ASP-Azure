@@ -2,7 +2,7 @@
 {
     public class UserPage_PageModel
     {
-        public String PageTitle {  get; set; }
+        public String? PageTitle {  get; set; }
         public UserPageFormModel? Model { get; set; }
     }
 }

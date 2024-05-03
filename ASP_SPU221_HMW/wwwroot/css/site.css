@@ -20,3 +20,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+.w40 {
+    max-width: 40px;
+    max-height: 40px;
+    
+}
+.rounded-circle {
+    border-radius: 50%;
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 20px;
+}
+.UPimg {
+    max-width: 250px;
+    max-height: 250px;
+}

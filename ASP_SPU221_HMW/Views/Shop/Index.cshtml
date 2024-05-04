@@ -1,0 +1,73 @@
+﻿@using System.Security.Claims
+@using ASP_SPU221_HMW.Data.Entities
+@{
+    Layout = "_ShopLayout";
+    bool isAuthenticated = Context.User.Identity?.IsAuthenticated ?? false;
+    var Categories = ViewData["Categories"] as List<Category>;
+
+}
+<div class="row justify-content-start"> <!--нижняя панель-->
+    @foreach (var category in Categories)
+    {
+        <div class="col ctg-item">
+            <a asp-action="Category" asp-route-id="@(category.Slug)">
+                <img src="~/img/shop/@(category.ImageUrl)" alt="Image" /> <br />
+                <p class="btn btn-sm btn-outline-secondary me-0">@category.Name</p>
+            </a>
+        </div>
+    }
+    <div class="col ctg-item">
+        <a asp-action="Category" asp-route-id="other">
+            <span class="icon">...</span> <br />
+            <p class="btn btn-sm btn-outline-secondary me-0">OTHER</p>
+        </a>
+    </div>
+</div>
+@if (isAuthenticated)
+{
+    <div class="row justify-content-end">
+        <div class="col col-4">
+            <h2>ADD new group of product</h2>
+            <form id="category-form" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="category-name"><i class="bi bi-tags"></i></span>
+                            <input type="text" class="form-control"
+                                   placeholder="Name of ..." name="category-name"
+                                   aria-describedby="category-name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="category-slug"><i class="bi bi-link"></i></span>
+                            <input type="text" class="form-control"
+                                   placeholder="Links" name="category-slug"
+                                   aria-describedby="category-slug">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="input-group">
+                            <span class="input-group-text">D</span>
+                            <textarea class="form-control" name="category-description"
+                                      placeholder="Deskription"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-8">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="category-image"><i class="bi bi-file-earmark-image"></i></label>
+                            <input type="file" class="form-control" name="category-image" id="category-image">
+                        </div>
+                    </div>
+                    <div class="col col-4">
+                        <button type="submit" class="btn btn-outline-primary">ADD</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}

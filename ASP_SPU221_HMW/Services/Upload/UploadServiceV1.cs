@@ -17,23 +17,17 @@
             ArgumentNullException.ThrowIfNull(formFile, nameof(formFile));
             ArgumentNullException.ThrowIfNull(path, nameof(path));
 
-            //отделяем расширения файла
             String ext = Path.GetExtension(formFile.FileName);
-            //проверка розширения на разрешения
             if (extensionsAllowed.Any() && !extensionsAllowed.Any(e => e == ext))
             {
                 throw new Exception("extension not allowed");
             }
-            //генерируем новое имя для файла
             String savedName = Guid.NewGuid().ToString() + ext;
-            //выбираем место сохранения
             String location = Path.Combine(Directory.GetCurrentDirectory(),
                 path,
                 savedName);
-            //сохраняем
             using var stream = System.IO.File.OpenWrite(location);
             formFile.CopyTo(stream);
-            //передаем сохраненное имя в маодель
             return savedName;
         }
     }

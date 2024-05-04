@@ -1,37 +1,84 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 .w40 {
     max-width: 40px;
     max-height: 40px;
-    
 }
+
 .rounded-circle {
     border-radius: 50%;
     max-width: 40px;
     max-height: 40px;
     margin-right: 20px;
 }
+
 .UPimg {
     max-width: 250px;
     max-height: 250px;
+}
+
+.sub-header {
+    width: 100%;
+    height: 25vh;
+    min-height: 200px;
+}
+
+    .sub-header h1, .sub-header h2 {
+        color: aqua;
+        font-size: large;
+    }
+
+.carousel-item {
+    width: 100%;
+    height: 25vh;
+    min-height: 200px;
+}
+
+.carousel-item img {
+    border-radius: 10px; /* ƒобавл€ем закругленные углы */
+    object-fit: cover; /* –аст€гиваем картинки, чтобы они заполн€ли весь контейнер */
+    width: 100%;
+    height: 100%;
+}
+
+.ctg-item {
+    margin: 10px;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+    .ctg-item img {
+        border-radius: 50%;
+        max-height: 100px;
+        max-width: 100px;
+    }
+.ctg-item el i{
+resize:block;
+font-weight:100;
+}
+.icon {
+    font-size: 100px;
+    color: #000;
+    text-decoration: none;
 }

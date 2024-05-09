@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASP_SPU221_HMW")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e054e8d54d30b1e4089c36a496c74e2784a880d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39b395acccb536428e90772fa43da4ce187d74a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASP_SPU221_HMW")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASP_SPU221_HMW")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

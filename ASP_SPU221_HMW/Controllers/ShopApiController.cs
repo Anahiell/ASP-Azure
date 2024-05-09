@@ -95,5 +95,64 @@ namespace ASP_SPU221_HMW.Controllers
                 return restResponse;
             }
         }
+        [HttpPost("product")]
+        public RestResponse AddProduct(ShopProductFormModel? model)
+        {
+            RestResponse restResponse = new()
+            {
+                Meta = new()
+                {
+                    Service = "/api/shop/product",
+                    ServerTime = DateTime.Now.Ticks,
+                    ReguestParameters = model?.ToParams() ?? []
+                }
+            };
+            _logger.LogInformation(String.Join(',', restResponse.Meta.ReguestParameters.Values));
+            if (model?.Price==null ||
+                String.IsNullOrEmpty(model?.Name) ||
+                String.IsNullOrEmpty(model?.Description))
+            {
+                restResponse.Status = new()
+                {
+                    Code = StatusCodes.Status422UnprocessableEntity,
+                    Message = "ok",
+                    IsOK = false
+
+                };
+                return restResponse;
+            }
+            else
+            {
+                try
+                {
+                    var product = _dataAccessor.ShopDao.AddProduct(
+                        categoryId: model.CategoryId,
+                        name: model.Name,
+                        price: model.Price,
+                    description: model.Description,
+                        imageUrl: _uploadService.SaveFormFile(model.Image, "wwwroot/img/shop")
+                        );
+                    restResponse.Status = new()
+                    {
+                        Code = StatusCodes.Status201Created,
+                        Message = "Missing required data",
+                        IsOK = true
+
+                    };
+                    restResponse.Data = product;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                    restResponse.Status = new()
+                    {
+                        Code = StatusCodes.Status500InternalServerError,
+                        Message = "Server error. Details in logs",
+                        IsOK = false
+                    };
+                }
+                return restResponse;
+            }
+        }
     }
 }

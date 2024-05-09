@@ -17,12 +17,23 @@ namespace ASP_SPU221_HMW.Data.Dal
             }
             return res;
         }
+        public Category GetCategoryBySlug(string slug)
+        {
+            lock (_dbLocker)
+            {
+                Category? res = _context.Categories.FirstOrDefault(c => c.Slug == slug && c.IsActive);
+                if(res == null)
+                {
+                    Guid id = Guid.Parse(slug);
+                    res = _context.Categories.FirstOrDefault(c => c.Id == id && c.IsActive);
+                }
+                return res;
+            }
+        }
         public Category AddCategory(String name, String slug, String description, String imageUrl)
         {
             Category category = new()
             {
-
-
                 Name = name,
                 Slug = slug,
                 Description = description,
@@ -64,6 +75,23 @@ namespace ASP_SPU221_HMW.Data.Dal
                 _context.SaveChanges();
             }
             return product;
+        }
+        public List<Product> GetProductsByCategoryId(Guid categoryId)
+        {
+            List<Product> res;
+            lock (_dbLocker)
+            {
+                res= _context.Products.Where(p => p.CategoryId == categoryId).ToList();
+            }
+            return res;
+        }
+        public List<Product> GetProductsByCategoryId(Category category)
+        {
+            if (category == null)
+            {
+                return new List<Product>();
+            }
+            return GetProductsByCategoryId(category.Id);
         }
     }
 }

@@ -50,7 +50,7 @@
                                 }
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-sm btn-outline-secondary me-0" type="button" asp-controller="Shop" asp-action="Shop"><i class="bi bi-cart4"></i> Shop</a>
+                                <a class="btn btn-sm btn-outline-secondary me-0" type="button" asp-controller="Shop" asp-action="Index"><i class="bi bi-cart4"></i> Shop</a>
                             </li>
                         </ul>
                     </div>
@@ -73,18 +73,21 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col col-3"> <!--боковая панель категорий-->
+            <div class="col col-2">
+                <!--боковая панель категорий-->
                 <ul class="list-group">
-                @{
-                    var Categories = ViewData["Categories"] as List<Category>;
-                }
-                @foreach (var category in Categories)
-                {
+                    @{
+                        var Categories = ViewData["Categories"] as List<Category>;
+                    }
+                    @foreach (var category in Categories)
+                    {
                         <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a asp-action="Category" asp-route-id="@(category.Slug)" class="btn-sm btn-outline-secondary ">
                             @category.Name <i class="bi bi-arrow-right"></i>
                             <span class="badge text-bg-primary rounded-pill"></span>
+                            </a>
                         </li>
-                }
+                    }
                 </ul>
             </div>
             <div class="col col-9">
@@ -97,21 +100,21 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active im1">
-                                <img src="./img/shop/Екранна-снимка-2022-03-30-110849.jpg" class="d-block w-100 h-100" alt="cropp">
+                                <img src="~/img/shop/Екранна-снимка-2022-03-30-110849.jpg" class="d-block w-100 h-100" alt="cropp">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>First Shop is CROPP</h5>
                                     <p>CROPP not bad shop but not for everyone</p>
                                 </div>
                             </div>
                             <div class="carousel-item im2">
-                                <img src="./img/shop/2o4a2112.jpg" class="d-block w-100 h-100" alt="new york">
+                                <img src="~/img/shop/2o4a2112.jpg" class="d-block w-100 h-100" alt="new york">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Second Shop is NEW YORKER</h5>
                                     <p>NEW YORKER most interesting shop, they have big choosen</p>
                                 </div>
                             </div>
                             <div class="carousel-item im3">
-                                <img src="./img/shop/564a6504_1400x1400.webp" class="d-block w-100 h-100" alt="gucci">
+                                <img src="~/img/shop/564a6504_1400x1400.webp" class="d-block w-100 h-100" alt="gucci">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>Third Shop is GUCCI</h5>
                                     <p>Some famous brend and very expanciv</p>

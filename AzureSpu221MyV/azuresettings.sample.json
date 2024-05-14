@@ -1,0 +1,9 @@
+{
+  "azure": {
+    "translator": {
+      "key": "<your-translator-key>",
+      "region": "global",
+      "endpoint": "https://api.cognitive.microsofttranslator.com/"
+    }
+  }
+}
